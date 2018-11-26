@@ -100,7 +100,7 @@ public class EphemeralKafkaBrokerTest {
 
             consumer.subscribe(Lists.newArrayList(TEST_TOPIC));
             ConsumerRecords<String, String> records;
-            records = consumer.poll(Duration.ofSeconds(10));
+            records = consumer.poll(TEN_SECONDS);
             assertThat(records).isNotNull();
             assertThat(records.isEmpty()).isFalse();
 

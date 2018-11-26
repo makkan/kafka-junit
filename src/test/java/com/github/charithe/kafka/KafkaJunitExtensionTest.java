@@ -72,7 +72,7 @@ class KafkaJunitExtensionTest {
 
             try (KafkaConsumer<String, String> consumer = kafkaHelper.createStringConsumer()) {
                 consumer.subscribe(Lists.newArrayList(TOPIC));
-                ConsumerRecords<String, String> records = consumer.poll(10000);
+                ConsumerRecords<String, String> records = consumer.poll(TEN_SECONDS);
                 Assertions.assertAll(() -> assertThat(records).isNotNull(),
                                      () -> assertThat(records.isEmpty()).isFalse());
 

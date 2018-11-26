@@ -52,7 +52,7 @@ public class KafkaJunitRuleTest {
 
             try (KafkaConsumer<String, String> consumer = kafkaRule.helper().createStringConsumer()) {
                 consumer.subscribe(Lists.newArrayList(TOPIC));
-                ConsumerRecords<String, String> records = consumer.poll(10000);
+                ConsumerRecords<String, String> records = consumer.poll(TEN_SECONDS);
                 assertThat(records).isNotNull();
                 assertThat(records.isEmpty()).isFalse();
 

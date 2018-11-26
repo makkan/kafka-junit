@@ -28,6 +28,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import static com.github.charithe.kafka.EphemeralKafkaBrokerTest.TEN_SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class KafkaHelperTest {
@@ -58,7 +59,7 @@ public class KafkaHelperTest {
 
         try (KafkaConsumer<String, String> consumer = helper.createStringConsumer()) {
             consumer.subscribe(Lists.newArrayList("test"));
-            ConsumerRecords<String, String> records = consumer.poll(10000);
+            ConsumerRecords<String, String> records = consumer.poll(TEN_SECONDS);
             ConsumerRecord<String, String> cr = records.records("test").iterator().next();
             assertThat(cr.key()).isEqualTo("k");
             assertThat(cr.value()).isEqualTo("v");
